@@ -1,7 +1,7 @@
 ## The first function, makeCacheMatrix creates a "matrix" that stores the cache value
 ##get the value of the matrix
-##set the value of the inverse
-##get the value of the inverse
+##set the value of the matrix
+##get the value of the matrix
 
 makeCacheMatrix <- function(x = matrix()) {
        inverse<- NULL
@@ -21,14 +21,14 @@ makeCacheMatrix <- function(x = matrix()) {
 ## if the mean is calculated before cachesolve gets the data from makecachematrix, 
 ##else it calculates the inverse of the matrix
 
-cacheSolve <- function(x, ...) {
+cacheSolve <- function(x= matrix(), ...) {
     inverse <- x$getinverse()
     if(!is.null(inverse)) {
       message("getting cached data")
       return(inverse)
     }
-    data <- x$get()
-    inverse <- solve(data, ...)
+    matrix <- x$get()
+    inverse <- solve(matrix, ...)
     x$setinverse(inverse)
     inverse
    
