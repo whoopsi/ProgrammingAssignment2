@@ -1,0 +1,33 @@
+let us load the data
+
+````{r}
+library(ggplot2)
+library(dplyr)
+rawdata<- read.csv("./activity.csv")
+````
+
+calculating the number of steps taking each day
+````{r}
+data<- group_by(rawdata, date)
+data1<- as.data.frame(summarize(data, steps= sum(steps, na.rm= TRUE)))
+````
+
+
+making a histogram of total number of steps taken each day
+````{r}
+plot(data1$steps, type="h", xlab="days(oct- nov)", ylab="steps")
+````
+
+calculating mean and median
+````{r}
+mean<- mean(data1$steps)
+mean
+median<- median(data1$steps)
+median
+````
+
+calculating number of na values in the dataset
+````{r}
+sum_na<- length(which(is.na(rawdata$steps)))
+sum_na
+````
